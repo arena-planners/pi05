@@ -1,0 +1,38 @@
+action_type: velocity_chunk
+rate_hz: 10
+sensor_needs: [image]
+controls_orientation: false
+goal_inputs: [instruction]
+signals: []
+
+chunk:
+  execute_s: 0.5
+  dt: 0.1
+
+depends:
+  global_plan: false
+
+config:
+  checkpoint: model/pi05_base_pytorch
+  embodiment: trossen_mobile
+  device: auto
+  flow_steps: 10
+  compile_mode: ""
+  server_python: server/.venv/bin/python
+  tokenizer: model/paligemma_tokenizer.model
+  openpi_data: model/openpi-data
+  port: 0
+  startup_timeout_s: 900
+
+observations:
+  aliases: {}
+
+  datasources:
+    robot_pose:
+      type: RobotPoseTFGenerator
+      params: {}
+
+    camera:
+      type: sensor_msgs/Image
+      params:
+        sensor: image

@@ -1,0 +1,29 @@
+[project]
+name = "arena_planners_pi05"
+version = "0.0.0"
+description = "pi0.5 base (openpi) planner adapter for arena_planners bridge."
+requires-python = ">=3.10"
+dependencies = [
+    "arena_planners",
+    "numpy",
+    "msgpack",
+    "websockets>=13",
+    "pyyaml",
+]
+
+[tool.uv.sources]
+arena_planners = { git = "https://github.com/arena-planners/arena_planners.git", branch = "jazzy", subdirectory = "arena_planners" }
+
+[tool.setuptools]
+packages = []
+py-modules = []
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

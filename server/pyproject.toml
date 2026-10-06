@@ -1,0 +1,25 @@
+[project]
+name = "arena_planners_pi05_server"
+version = "0.0.0"
+description = "openpi policy server for the pi05 planner."
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "openpi",
+    "openpi-client",
+    "torch==2.7.1",
+]
+
+[tool.uv]
+package = false
+override-dependencies = ["ml-dtypes==0.4.1", "tensorstore==0.1.74"]
+
+[tool.uv.sources]
+openpi = { git = "https://github.com/Physical-Intelligence/openpi.git", rev = "215abfb217dbac7d5f1273282331b9b1866c0479" }
+openpi-client = { git = "https://github.com/Physical-Intelligence/openpi.git", rev = "215abfb217dbac7d5f1273282331b9b1866c0479", subdirectory = "packages/openpi-client" }
+lerobot = { git = "https://github.com/huggingface/lerobot", rev = "0cf864870cf29f4738d3ade893e6fd13fbd7cdb5" }
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
